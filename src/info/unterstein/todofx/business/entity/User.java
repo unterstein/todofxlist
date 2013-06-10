@@ -58,5 +58,9 @@ public class User implements Serializable {
     this.lists = lists;
   }
 
-
+  public TodoList addList(String listName) {
+    TodoList todoList = new TodoList(listName);
+    lists.add(todoList);
+    return todoList;
+  }
 }

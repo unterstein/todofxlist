@@ -13,7 +13,7 @@
         <SplitPane dividerPositions="0.7506265664160401" focusTraversable="true">
           <items>
             <BorderPane prefHeight="200.0" prefWidth="200.0" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" />
+            <BorderPane prefHeight="598.0" prefWidth="223.0" />
           </items>
         </SplitPane>
       </center>

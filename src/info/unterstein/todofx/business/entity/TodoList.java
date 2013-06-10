@@ -30,4 +30,10 @@ public class TodoList implements Serializable {
   public void setTasks(List<Task> tasks) {
     this.tasks = tasks;
   }
+
+  public Task addTask(String taskName) {
+    Task task = new Task(taskName);
+    tasks.add(task);
+    return task;
+  }
 }

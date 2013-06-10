@@ -38,6 +38,10 @@ public class TodoListService {
     return true;
   }
 
+  public void storeDatabase() {
+    PersistenceService.instance().saveUsers(users);
+  }
+
   public boolean userNameExists(String userName) {
     if (userName == null || userName.isEmpty()) {
       return false;

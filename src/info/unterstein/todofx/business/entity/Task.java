@@ -60,4 +60,9 @@ public class Task implements Serializable {
   public void setDueDate(Date dueDate) {
     this.dueDate = dueDate;
   }
+
+  public String toSerializeString() {
+    return this.getTitle() + ", " + this.getDescription() + ", " + this.isFinished() + ", " + this.isPrioritized() + ", "
+        + this.getDueDate();
+  }
 }
