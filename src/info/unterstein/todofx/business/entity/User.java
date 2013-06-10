@@ -14,11 +14,17 @@ public class User implements Serializable {
 
   private List<TodoList> lists;
 
+
   public User(String name, String password) {
     this.name = name;
     this.password = password;
     lists = new ArrayList();
-    lists.add(new TodoList(DEFAULT_LIST_NAME));
+  }
+
+  public static User createUser(String name, String password) {
+    User result = new User(name, password);
+    result.lists.add(new TodoList(DEFAULT_LIST_NAME));
+    return result;
   }
 
   /**

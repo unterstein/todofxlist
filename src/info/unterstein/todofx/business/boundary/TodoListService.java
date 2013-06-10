@@ -13,6 +13,8 @@ public class TodoListService {
 
   private Map<String, User> users;
 
+  private User loggedInUser;
+
   private TodoListService() {
   }
 
@@ -58,18 +60,23 @@ public class TodoListService {
       return null;
     }
     if (dbUser.comparePassword(password) == true) {
+      loggedInUser = dbUser;
       return dbUser;
     }
     return null;
   }
 
   public User register(String userName, String password, String rePassword) throws IllegalArgumentException {
-    if (users.containsKey(userName) == true) {
+    if (users.containsKey(userName) == true || validateEquals(password, rePassword)) {
       throw new IllegalArgumentException();
     }
-    User user = new User(userName, password);
+    User user = User.createUser(userName, password);
     users.put(userName, user);
+    loggedInUser = user;
     return user;
   }
 
+  public User getLoggedInUser() {
+    return loggedInUser;
+  }
 }
