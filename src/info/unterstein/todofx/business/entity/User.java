@@ -15,7 +15,7 @@ public class User implements Serializable {
   private List<TodoList> lists;
 
   public User() {
-    lists = new ArrayList<TodoList>();
+    lists = new ArrayList();
     lists.add(new TodoList(DEFAULT_LIST_NAME));
   }
 

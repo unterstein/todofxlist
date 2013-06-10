@@ -1,6 +1,7 @@
 package info.unterstein.todofx.business.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TodoList implements Serializable {
@@ -11,6 +12,7 @@ public class TodoList implements Serializable {
 
   public TodoList(String name) {
     this.name = name;
+    tasks = new ArrayList<>();
   }
 
   public String getName() {
