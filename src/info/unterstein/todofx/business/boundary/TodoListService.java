@@ -39,12 +39,29 @@ public class TodoListService {
     return null;
   }
 
-  public User register(String userName, String password) throws IllegalArgumentException {
+  public User register(String userName, String password, String rePassword) throws IllegalArgumentException {
     if (users.containsKey(userName) == true) {
       throw new IllegalArgumentException();
     }
     User user = new User(userName, password);
     users.put(userName, user);
     return user;
+  }
+
+  public static boolean validateEquals(String passwordValue, String rePasswordValue) {
+    if (passwordValue == null || rePasswordValue == null) {
+      return false;
+    }
+    return passwordValue.equals(rePasswordValue);
+  }
+
+  public static boolean validateInputs(String userName, String password) {
+    if (userName == null || userName.isEmpty() || userName.length() < 4) {
+      return false;
+    }
+    if (password == null || password.isEmpty() || userName.length() < 4) {
+      return false;
+    }
+    return true;
   }
 }

@@ -1,6 +1,7 @@
 package info.unterstein.todofx.presentation.login;
 
 import info.unterstein.todofx.business.boundary.TodoListService;
+import info.unterstein.todofx.business.entity.User;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,16 +16,34 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-  private static final String LENGTH_ERROR = "Name and Password must be at least 4 characters.";
+  private static final String LENGTH_ERROR = "Name and password must be at least 4 characters.";
+
+  private static final String PASSWORD_MATH_ERROR = "Passwords does not match.";
+
+  private static final String PASSWORD_USER_ERROR = "Username or password is wrong.";
+
+  private static final String USER_EXISTS = "Username exists.";
 
   @FXML
   private Button login;
 
   @FXML
-  private TextField userName;
+  private Button register;
 
   @FXML
-  private PasswordField password;
+  private TextField loginUserName;
+
+  @FXML
+  private PasswordField loginPassword;
+
+  @FXML
+  private TextField registerUserName;
+
+  @FXML
+  private PasswordField registerPassword;
+
+  @FXML
+  private PasswordField registerRePassword;
 
   @FXML
   private Label errors;
@@ -35,27 +54,51 @@ public class LoginController implements Initializable {
 
       @Override
       public void handle(MouseEvent mouseEvent) {
-        String userNameValue = userName.getText();
-        String passwordValue = password.getText();
+        String userNameValue = loginUserName.getText();
+        String passwordValue = loginPassword.getText();
         // validation
-        if (validate(userNameValue, passwordValue) == false) {
+        if (TodoListService.validateInputs(userNameValue, passwordValue) == false) {
           errors.setText(LENGTH_ERROR);
           return;
         }
         // persistence
         errors.setText("");
-        TodoListService.instance().login(userNameValue, passwordValue);
+        User user = TodoListService.instance().login(userNameValue, passwordValue);
+        if (user == null) {
+          errors.setText(PASSWORD_USER_ERROR);
+          return;
+        }
+        // TODO switch View
       }
+    });
+    register.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        String userNameValue = registerUserName.getText();
+        String passwordValue = registerPassword.getText();
+        String rePasswordValue = registerRePassword.getText();
+        // validation
+        if (TodoListService.validateInputs(userNameValue, passwordValue) == false) {
+          errors.setText(LENGTH_ERROR);
+          return;
+        }
+        if (TodoListService.validateEquals(passwordValue, rePasswordValue) == false) {
+          errors.setText(PASSWORD_MATH_ERROR);
+          return;
+        }
+        try {
+          // persistence
+          errors.setText("");
+          TodoListService.instance().register(userNameValue, passwordValue, rePasswordValue);
+          // TODO switch View
+        } catch (IllegalArgumentException e) {
+          errors.setText(USER_EXISTS);
+        }
+      }
+
     });
   }
 
-  private boolean validate(String userName, String password) {
-    if (userName == null || userName.isEmpty() || userName.length() < 4) {
-      return false;
-    }
-    if (password == null || password.isEmpty() || userName.length() < 4) {
-      return false;
-    }
-    return true;
-  }
+
 }

@@ -9,32 +9,66 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane alignment="CENTER" hgap="10.0" minHeight="400.0" minWidth="600.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml">
+<GridPane alignment="CENTER" hgap="10.0" minHeight="600.0" minWidth="800.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml">
   <children>
-    <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <BorderPane minHeight="600.0" minWidth="400.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <center>
-        <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+        <FlowPane alignment="TOP_CENTER">
           <children>
-            <GridPane minHeight="-Infinity" minWidth="-Infinity">
-              <children>
-                <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField id="username" fx:id="userName" prefWidth="200.0" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <PasswordField fx:id="password" prefWidth="200.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label text="Login" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Button fx:id="login" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-              </children>
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
+            <TabPane minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Login">
+                  <content>
+                    <GridPane minHeight="-Infinity" minWidth="-Infinity">
+                      <children>
+                        <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField id="username" fx:id="userName" prefWidth="200.0" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="password" prefWidth="200.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Login" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Button fx:id="login" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </content>
+                </Tab>
+                <Tab text="Register">
+                  <content>
+                    <GridPane>
+                      <children>
+                        <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Label text="RePassword" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField id="username" fx:id="registerUserName" prefWidth="200.0" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="registerPassword" prefWidth="200.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <PasswordField fx:id="registerRePassword" prefWidth="200.0" promptText="RePassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Register" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Button fx:id="register" mnemonicParsing="false" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
           </children>
         </FlowPane>
       </center>
