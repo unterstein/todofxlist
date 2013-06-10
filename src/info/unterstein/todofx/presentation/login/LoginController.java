@@ -1,10 +1,12 @@
 package info.unterstein.todofx.presentation.login;
 
+import info.unterstein.todofx.business.boundary.I18nService;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +25,9 @@ public class LoginController implements Initializable {
   @FXML
   private PasswordField password;
 
+  @FXML
+  private Label errors;
+
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     login.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -33,10 +38,11 @@ public class LoginController implements Initializable {
         String passwordValue = password.getText();
         // validation
         if (validate(userNameValue, passwordValue) == false) {
-          // TODO signalize errors
+          errors.setText(I18nService.getLoginRegisterError());
           return;
         }
         // persistence
+        errors.setText("");
         TodoListService.instance().login(userNameValue, passwordValue);
       }
     });
