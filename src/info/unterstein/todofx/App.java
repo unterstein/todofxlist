@@ -15,11 +15,13 @@ public class App extends Application {
   }
 
   public static void initAndStartView(AbstractView view) {
-    // start View
-    primaryStage.setTitle(view.getTitle());
-    Scene loginScene = new Scene(view.getView());
-    primaryStage.setScene(loginScene);
-    primaryStage.show();
+    if (primaryStage != null) {
+      // start View
+      primaryStage.setTitle(view.getTitle());
+      Scene scene = new Scene(view.getView());
+      primaryStage.setScene(scene);
+      primaryStage.show();
+    }
   }
 
   @Override
