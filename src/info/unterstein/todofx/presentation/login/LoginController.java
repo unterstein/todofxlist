@@ -1,4 +1,4 @@
-package info.unterstein.todofx.login;
+package info.unterstein.todofx.presentation.login;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

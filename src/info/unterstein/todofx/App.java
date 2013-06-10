@@ -1,9 +1,7 @@
 package info.unterstein.todofx;
 
-import info.unterstein.todofx.login.LoginView;
+import info.unterstein.todofx.presentation.login.LoginView;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

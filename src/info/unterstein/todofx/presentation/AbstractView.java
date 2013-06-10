@@ -1,4 +1,4 @@
-package info.unterstein.todofx;
+package info.unterstein.todofx.presentation;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
