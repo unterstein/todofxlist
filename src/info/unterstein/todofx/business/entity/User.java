@@ -1,12 +1,12 @@
 package info.unterstein.todofx.business.entity;
 
-import info.unterstein.todofx.business.boundary.I18nService;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
+
+  private static final String DEFAULT_LIST_NAME = "Inbox";
 
   private String name;
 
@@ -18,7 +18,7 @@ public class User implements Serializable {
     this.name = name;
     this.password = password;
     lists = new ArrayList();
-    lists.add(new TodoList(I18nService.getTodoListDefaultName()));
+    lists.add(new TodoList(DEFAULT_LIST_NAME));
   }
 
   /**

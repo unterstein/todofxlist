@@ -1,6 +1,5 @@
 package info.unterstein.todofx.presentation.login;
 
-import info.unterstein.todofx.business.boundary.I18nService;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +14,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+
+  private static final String LENGTH_ERROR = "Name and Password must be at least 4 characters.";
 
   @FXML
   private Button login;
@@ -38,7 +39,7 @@ public class LoginController implements Initializable {
         String passwordValue = password.getText();
         // validation
         if (validate(userNameValue, passwordValue) == false) {
-          errors.setText(I18nService.getLoginRegisterError());
+          errors.setText(LENGTH_ERROR);
           return;
         }
         // persistence
