@@ -14,7 +14,6 @@ public class TodoListService {
   private Map<String, User> users;
 
   private TodoListService() {
-    users = PersistenceService.instance().loadUsers();
   }
 
   public static TodoListService instance() {
@@ -40,6 +39,10 @@ public class TodoListService {
 
   public void storeDatabase() {
     PersistenceService.instance().saveUsers(users);
+  }
+
+  public void loadDatabase() {
+    users = PersistenceService.instance().loadUsers();
   }
 
   public boolean userNameExists(String userName) {
@@ -68,4 +71,5 @@ public class TodoListService {
     users.put(userName, user);
     return user;
   }
+
 }

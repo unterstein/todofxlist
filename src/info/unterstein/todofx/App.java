@@ -1,10 +1,13 @@
 package info.unterstein.todofx;
 
+import info.unterstein.todofx.business.boundary.TodoListService;
 import info.unterstein.todofx.presentation.AbstractView;
 import info.unterstein.todofx.presentation.login.LoginView;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class App extends Application {
 
@@ -27,6 +30,14 @@ public class App extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     this.primaryStage = primaryStage;
+    this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+      @Override
+      public void handle(WindowEvent windowEvent) {
+        TodoListService.instance().storeDatabase();
+      }
+    });
+    TodoListService.instance().loadDatabase();
     initAndStartView(new LoginView());
   }
 }
