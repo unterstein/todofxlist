@@ -69,4 +69,14 @@ public class User implements Serializable {
     lists.add(todoList);
     return todoList;
   }
+
+  public void removeList(TodoList item) {
+    if (lists.get(0).equals(item) == false) {
+      lists.remove(item);
+    }
+  }
+
+  public TodoList getDefaultList() {
+    return lists.get(0);
+  }
 }
