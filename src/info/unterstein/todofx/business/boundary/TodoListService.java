@@ -5,7 +5,7 @@ import info.unterstein.todofx.business.entity.User;
 import java.util.Map;
 
 /**
- *
+ * TodoListService as singleton<br/>
  */
 public class TodoListService {
 
@@ -19,6 +19,23 @@ public class TodoListService {
 
   public static TodoListService instance() {
     return instance;
+  }
+
+  public static boolean validateEquals(String passwordValue, String rePasswordValue) {
+    if (passwordValue == null || rePasswordValue == null) {
+      return false;
+    }
+    return passwordValue.equals(rePasswordValue);
+  }
+
+  public static boolean validateInputs(String userName, String password) {
+    if (userName == null || userName.isEmpty() || userName.length() < 4) {
+      return false;
+    }
+    if (password == null || password.isEmpty() || userName.length() < 4) {
+      return false;
+    }
+    return true;
   }
 
   public boolean userNameExists(String userName) {
@@ -46,22 +63,5 @@ public class TodoListService {
     User user = new User(userName, password);
     users.put(userName, user);
     return user;
-  }
-
-  public static boolean validateEquals(String passwordValue, String rePasswordValue) {
-    if (passwordValue == null || rePasswordValue == null) {
-      return false;
-    }
-    return passwordValue.equals(rePasswordValue);
-  }
-
-  public static boolean validateInputs(String userName, String password) {
-    if (userName == null || userName.isEmpty() || userName.length() < 4) {
-      return false;
-    }
-    if (password == null || password.isEmpty() || userName.length() < 4) {
-      return false;
-    }
-    return true;
   }
 }
