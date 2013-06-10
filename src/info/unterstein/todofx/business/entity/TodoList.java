@@ -36,4 +36,9 @@ public class TodoList implements Serializable {
     tasks.add(task);
     return task;
   }
+
+  @Override
+  public String toString() {
+    return getName();
+  }
 }
