@@ -12,8 +12,11 @@ public abstract class AbstractView {
 
   protected FXMLLoader loader;
 
-  protected AbstractView(Class<? extends Initializable> controller) {
+  private String title;
+
+  protected AbstractView(Class<? extends Initializable> controller, String title) {
     this.controller = controller;
+    this.title = title;
     init(getClass(), getFXMLName());
   }
 
@@ -36,5 +39,9 @@ public abstract class AbstractView {
     String name = this.getClass().getSimpleName().toLowerCase();
     name = name.replace("view", "") + ".fxml";
     return name;
+  }
+
+  public String getTitle() {
+    return title;
   }
 }

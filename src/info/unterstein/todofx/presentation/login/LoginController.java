@@ -1,7 +1,9 @@
 package info.unterstein.todofx.presentation.login;
 
+import info.unterstein.todofx.App;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import info.unterstein.todofx.business.entity.User;
+import info.unterstein.todofx.presentation.todo.TodoView;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -91,7 +93,7 @@ public class LoginController implements Initializable {
           // persistence
           errors.setText("");
           TodoListService.instance().register(userNameValue, passwordValue, rePasswordValue);
-          // TODO switch View
+          App.initAndStartView(new TodoView());
         } catch (IllegalArgumentException e) {
           errors.setText(USER_EXISTS);
         }

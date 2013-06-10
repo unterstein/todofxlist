@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" hgap="10.0" minHeight="600.0" minWidth="800.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <BorderPane minHeight="600.0" minWidth="400.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <center>
+        <Label text="YES!!!!" />
+      </center>
+      <GridPane.margin>
+        <Insets />
+      </GridPane.margin>
+    </BorderPane>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>
