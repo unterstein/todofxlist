@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-  private static final String LENGTH_ERROR = "Name and password must be at least 4 characters.";
+  private static final String LENGTH_ERROR = "Name and password must be set and at least 4 characters.";
 
   private static final String PASSWORD_MATH_ERROR = "Passwords does not match.";
 
