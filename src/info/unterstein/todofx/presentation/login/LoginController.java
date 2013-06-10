@@ -1,5 +1,6 @@
 package info.unterstein.todofx.presentation.login;
 
+import info.unterstein.todofx.business.boundary.TodoListService;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,8 +29,26 @@ public class LoginController implements Initializable {
 
       @Override
       public void handle(MouseEvent mouseEvent) {
-        System.out.println(userName.getText() + " : " + password.getText());
+        String userNameValue = userName.getText();
+        String passwordValue = password.getText();
+        // validation
+        if (validate(userNameValue, passwordValue) == false) {
+          // TODO signalize errors
+          return;
+        }
+        // persistence
+        TodoListService.instance().login(userNameValue, passwordValue);
       }
     });
+  }
+
+  private boolean validate(String userName, String password) {
+    if (userName == null || userName.isEmpty() || userName.length() < 4) {
+      return false;
+    }
+    if (password == null || password.isEmpty() || userName.length() < 4) {
+      return false;
+    }
+    return true;
   }
 }

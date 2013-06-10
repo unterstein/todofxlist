@@ -14,9 +14,24 @@ public class User implements Serializable {
 
   private List<TodoList> lists;
 
-  public User() {
+  public User(String name, String password) {
+    this.name = name;
+    this.password = password;
     lists = new ArrayList();
     lists.add(new TodoList(DEFAULT_LIST_NAME));
+  }
+
+  /**
+   * password compare, could be hashed as well!
+   *
+   * @param password
+   * @return
+   */
+  public boolean comparePassword(String password) {
+    if (this.password == null || password == null) {
+      return false;
+    }
+    return this.password.equals(password);
   }
 
   public String getName() {
@@ -42,4 +57,6 @@ public class User implements Serializable {
   public void setLists(List<TodoList> lists) {
     this.lists = lists;
   }
+
+
 }

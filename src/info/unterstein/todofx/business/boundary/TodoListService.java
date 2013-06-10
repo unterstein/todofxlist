@@ -21,8 +21,30 @@ public class TodoListService {
     return instance;
   }
 
-  public User register(String userName, String password) {
+  public boolean userNameExists(String userName) {
+    if (userName == null || userName.isEmpty()) {
+      return false;
+    }
+    return users.containsKey(userName);
+  }
 
+  public User login(String userName, String password) {
+    User dbUser = users.get(userName);
+    if (dbUser == null) { // semantically equals to users.containsKey(userName)
+      return null;
+    }
+    if (dbUser.comparePassword(password) == true) {
+      return dbUser;
+    }
     return null;
+  }
+
+  public User register(String userName, String password) throws IllegalArgumentException {
+    if (users.containsKey(userName) == true) {
+      throw new IllegalArgumentException();
+    }
+    User user = new User(userName, password);
+    users.put(userName, user);
+    return user;
   }
 }
