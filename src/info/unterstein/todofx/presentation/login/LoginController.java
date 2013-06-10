@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
           errors.setText(PASSWORD_USER_ERROR);
           return;
         }
-        // TODO switch View
+        App.initAndStartView(new TodoView());
       }
     });
     register.setOnMouseClicked(new EventHandler<MouseEvent>() {
