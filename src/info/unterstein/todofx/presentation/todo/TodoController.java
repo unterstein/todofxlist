@@ -1,7 +1,9 @@
 package info.unterstein.todofx.presentation.todo;
 
+import info.unterstein.todofx.App;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import info.unterstein.todofx.business.entity.TodoList;
+import info.unterstein.todofx.presentation.login.LoginView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -16,6 +18,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TodoController implements Initializable {
+
+  @FXML
+  private Button logout;
 
   @FXML
   private Button createList;
@@ -54,6 +59,14 @@ public class TodoController implements Initializable {
           }
         }
         updateList();
+      }
+    });
+    logout.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        TodoListService.instance().logout();
+        App.initAndStartView(new LoginView());
       }
     });
   }
