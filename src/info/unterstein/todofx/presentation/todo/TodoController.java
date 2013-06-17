@@ -112,7 +112,15 @@ public class TodoController implements Initializable {
 
       @Override
       public ListCell<Task> call(ListView<Task> taskListView) {
-        return new TaskCell();
+        TaskCell cell = new TaskCell();
+        cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+          @Override
+          public void handle(MouseEvent mouseEvent) {
+            // TODO
+          }
+        });
+        return cell;
       }
     });
     deleteTask.setOnMouseClicked(new EventHandler<MouseEvent>() {
