@@ -10,10 +10,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -103,16 +105,23 @@ public class TodoController implements Initializable {
         updateList();
       }
     });
+    taskList.setCellFactory(new Callback<ListView<Task>, ListCell<Task>>() {
+
+      @Override
+      public ListCell<Task> call(ListView<Task> taskListView) {
+        return new TaskCell();
+      }
+    });
   }
 
   private void updateList() {
     TaskList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
     TaskList selectedItem = todoListList.getSelectionModel().getSelectedItem();
     if (selectedItem == null) {
-      TodoListService.instance().setSelectedList(defaultList);
-    } else {
-      TodoListService.instance().setSelectedList(selectedItem);
+      selectedItem = defaultList;
     }
+
+    TodoListService.instance().setSelectedList(selectedItem);
     if (TodoListService.instance().getLoggedInUser().getDefaultList().equals(selectedItem)) {
       deleteList.setDisable(true);
     } else {
