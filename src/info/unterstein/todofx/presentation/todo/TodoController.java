@@ -53,52 +53,12 @@ public class TodoController implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
     updateList();
 
-    createList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    initTaskList();
 
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        String newListName = newList.getText();
-        TodoListService.instance().getLoggedInUser().addList(newListName);
-        updateList();
-        newList.setText("");
-      }
-    });
-    deleteList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    initTaskArea();
+  }
 
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        TaskList selectedItem = todoListList.getSelectionModel().getSelectedItem();
-        TaskList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
-        if (defaultList.equals(selectedItem) == false) {
-          TodoListService.instance().setSelectedList(defaultList);
-          todoListList.getSelectionModel().select(defaultList);
-          TodoListService.instance().getLoggedInUser().removeList(selectedItem);
-        }
-        updateList();
-      }
-    });
-    logout.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        TodoListService.instance().logout();
-        App.initAndStartView(new LoginView());
-      }
-    });
-    todoListList.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        updateList();
-      }
-    });
-    todoListList.setOnKeyReleased(new EventHandler<KeyEvent>() {
-
-      @Override
-      public void handle(KeyEvent keyEvent) {
-        updateList();
-      }
-    });
+  private void initTaskArea() {
     createTask.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
       @Override
@@ -130,6 +90,57 @@ public class TodoController implements Initializable {
         Task selectedItem = taskList.getSelectionModel().getSelectedItem();
         TodoListService.instance().getSelectedList().removeTask(selectedItem);
         updateList();
+      }
+    });
+  }
+
+  private void initTaskList() {
+    createList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        String newListName = newList.getText();
+        TodoListService.instance().getLoggedInUser().addList(newListName);
+        updateList();
+        newList.setText("");
+      }
+    });
+    deleteList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        TaskList selectedItem = todoListList.getSelectionModel().getSelectedItem();
+        TaskList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
+        if (defaultList.equals(selectedItem) == false) {
+          TodoListService.instance().setSelectedList(defaultList);
+          todoListList.getSelectionModel().select(defaultList);
+          TodoListService.instance().getLoggedInUser().removeList(selectedItem);
+        }
+        updateList();
+      }
+    });
+    // todoListList selection changes
+    todoListList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        updateList();
+      }
+    });
+    todoListList.setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+      @Override
+      public void handle(KeyEvent keyEvent) {
+        updateList();
+      }
+    });
+    // logout
+    logout.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        TodoListService.instance().logout();
+        App.initAndStartView(new LoginView());
       }
     });
   }
