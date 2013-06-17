@@ -12,7 +12,27 @@
       <center>
         <SplitPane dividerPositions="0.7506265664160401" focusTraversable="true">
           <items>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <center>
+                <ListView fx:id="taskList" prefHeight="200.0" prefWidth="200.0" />
+              </center>
+              <top>
+                <GridPane>
+                  <children>
+                    <TextField id="new" fx:id="newTask" prefWidth="226.0" promptText="New Task" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Button fx:id="createTask" mnemonicParsing="false" text="Create" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="109.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="343.0" minWidth="10.0" prefWidth="343.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="144.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </top>
+            </BorderPane>
             <BorderPane prefHeight="598.0" prefWidth="223.0">
               <bottom>
                 <GridPane>
@@ -30,7 +50,7 @@
                 </GridPane>
               </bottom>
               <center>
-                <ListView fx:id="taskList" prefHeight="200.0" prefWidth="200.0" />
+                <ListView id="taskList" fx:id="todoListList" prefHeight="200.0" prefWidth="200.0" />
               </center>
               <top>
                 <GridPane>

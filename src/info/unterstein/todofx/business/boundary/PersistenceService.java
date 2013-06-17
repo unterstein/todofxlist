@@ -77,7 +77,7 @@ class PersistenceService {
           task.setFinished(Boolean.valueOf(split[2].trim()));
           task.setPrioritized(Boolean.valueOf(split[3].trim()));
           String date = split[4].trim();
-          if (date != null && !"null".equals(date) == false) {
+          if (date != null && "null".equals(date) == false) {
             task.setDueDate(Date.valueOf(date));
           }
         }

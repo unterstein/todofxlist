@@ -1,5 +1,6 @@
 package info.unterstein.todofx.business.boundary;
 
+import info.unterstein.todofx.business.entity.TodoList;
 import info.unterstein.todofx.business.entity.User;
 
 import java.util.Map;
@@ -12,6 +13,8 @@ public class TodoListService {
   private static final TodoListService instance = new TodoListService();
 
   private Map<String, User> users;
+
+  private TodoList selectedList;
 
   private User loggedInUser;
 
@@ -61,6 +64,7 @@ public class TodoListService {
     }
     if (dbUser.comparePassword(password) == true) {
       loggedInUser = dbUser;
+      selectedList = dbUser.getDefaultList();
       return dbUser;
     }
     return null;
@@ -73,14 +77,23 @@ public class TodoListService {
     User user = User.createUser(userName, password);
     users.put(userName, user);
     loggedInUser = user;
+    selectedList = user.getDefaultList();
     return user;
+  }
+
+  public void logout() {
+    loggedInUser = null;
   }
 
   public User getLoggedInUser() {
     return loggedInUser;
   }
 
-  public void logout() {
-    loggedInUser = null;
+  public TodoList getSelectedList() {
+    return selectedList;
+  }
+
+  public void setSelectedList(TodoList selectedList) {
+    this.selectedList = selectedList;
   }
 }
