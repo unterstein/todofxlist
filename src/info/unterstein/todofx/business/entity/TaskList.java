@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoList implements Serializable {
+public class TaskList implements Serializable {
 
   private String name;
 
   private List<Task> tasks;
 
-  public TodoList(String name) {
+  public TaskList(String name) {
     this.name = name;
     tasks = new ArrayList<>();
   }

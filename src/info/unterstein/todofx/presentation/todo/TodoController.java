@@ -3,14 +3,9 @@ package info.unterstein.todofx.presentation.todo;
 import info.unterstein.todofx.App;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import info.unterstein.todofx.business.entity.Task;
-import info.unterstein.todofx.business.entity.TodoList;
+import info.unterstein.todofx.business.entity.TaskList;
 import info.unterstein.todofx.presentation.login.LoginView;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,7 +30,7 @@ public class TodoController implements Initializable {
   private TextField newList;
 
   @FXML
-  private ListView<TodoList> todoListList;
+  private ListView<TaskList> todoListList;
 
   @FXML
   private ListView<Task> taskList;
@@ -67,8 +62,8 @@ public class TodoController implements Initializable {
 
       @Override
       public void handle(MouseEvent mouseEvent) {
-        TodoList selectedItem = todoListList.getSelectionModel().getSelectedItem();
-        TodoList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
+        TaskList selectedItem = todoListList.getSelectionModel().getSelectedItem();
+        TaskList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
         if (defaultList.equals(selectedItem) == false) {
           TodoListService.instance().setSelectedList(defaultList);
           todoListList.getSelectionModel().select(defaultList);
@@ -111,8 +106,8 @@ public class TodoController implements Initializable {
   }
 
   private void updateList() {
-    TodoList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
-    TodoList selectedItem = todoListList.getSelectionModel().getSelectedItem();
+    TaskList defaultList = TodoListService.instance().getLoggedInUser().getDefaultList();
+    TaskList selectedItem = todoListList.getSelectionModel().getSelectedItem();
     if (selectedItem == null) {
       TodoListService.instance().setSelectedList(defaultList);
     } else {

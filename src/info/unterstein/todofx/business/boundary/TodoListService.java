@@ -1,6 +1,6 @@
 package info.unterstein.todofx.business.boundary;
 
-import info.unterstein.todofx.business.entity.TodoList;
+import info.unterstein.todofx.business.entity.TaskList;
 import info.unterstein.todofx.business.entity.User;
 
 import java.util.Map;
@@ -14,7 +14,7 @@ public class TodoListService {
 
   private Map<String, User> users;
 
-  private TodoList selectedList;
+  private TaskList selectedList;
 
   private User loggedInUser;
 
@@ -89,11 +89,11 @@ public class TodoListService {
     return loggedInUser;
   }
 
-  public TodoList getSelectedList() {
+  public TaskList getSelectedList() {
     return selectedList;
   }
 
-  public void setSelectedList(TodoList selectedList) {
+  public void setSelectedList(TaskList selectedList) {
     this.selectedList = selectedList;
   }
 }

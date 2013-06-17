@@ -1,7 +1,7 @@
 package info.unterstein.todofx.business.boundary;
 
 import info.unterstein.todofx.business.entity.Task;
-import info.unterstein.todofx.business.entity.TodoList;
+import info.unterstein.todofx.business.entity.TaskList;
 import info.unterstein.todofx.business.entity.User;
 
 import java.io.*;
@@ -38,7 +38,7 @@ class PersistenceService {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE))) {
       for (User user : users.values()) {
         writer.write(USER + " " + user.getName() + ", " + user.getPassword() + SEP);
-        for (TodoList list : user.getLists()) {
+        for (TaskList list : user.getLists()) {
           writer.write(LIST + " " + list.getName() + SEP);
           for (Task task : list.getTasks()) {
             writer.write(TASK + " " + task.toSerializeString() + SEP);
@@ -55,7 +55,7 @@ class PersistenceService {
     String line = null;
     String[] split = null;
     User currentUser = null;
-    TodoList currentList = null;
+    TaskList currentList = null;
     try (BufferedReader reader = new BufferedReader(new FileReader(FILE))) {
       while ((line = reader.readLine()) != null) {
         if (line.startsWith(USER)) {

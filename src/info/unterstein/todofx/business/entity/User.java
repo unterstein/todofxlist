@@ -12,7 +12,7 @@ public class User implements Serializable {
 
   private String password;
 
-  private List<TodoList> lists;
+  private List<TaskList> lists;
 
 
   public User(String name, String password) {
@@ -23,7 +23,7 @@ public class User implements Serializable {
 
   public static User createUser(String name, String password) {
     User result = new User(name, password);
-    result.lists.add(new TodoList(DEFAULT_LIST_NAME));
+    result.lists.add(new TaskList(DEFAULT_LIST_NAME));
     return result;
   }
 
@@ -56,27 +56,27 @@ public class User implements Serializable {
     this.password = password;
   }
 
-  public List<TodoList> getLists() {
+  public List<TaskList> getLists() {
     return lists;
   }
 
-  public void setLists(List<TodoList> lists) {
+  public void setLists(List<TaskList> lists) {
     this.lists = lists;
   }
 
-  public TodoList addList(String listName) {
-    TodoList todoList = new TodoList(listName);
+  public TaskList addList(String listName) {
+    TaskList todoList = new TaskList(listName);
     lists.add(todoList);
     return todoList;
   }
 
-  public void removeList(TodoList item) {
+  public void removeList(TaskList item) {
     if (lists.get(0).equals(item) == false) {
       lists.remove(item);
     }
   }
 
-  public TodoList getDefaultList() {
+  public TaskList getDefaultList() {
     return lists.get(0);
   }
 }
