@@ -13,6 +13,20 @@
         <SplitPane dividerPositions="0.7506265664160401" focusTraversable="true">
           <items>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <bottom>
+                <GridPane>
+                  <children>
+                    <Button fx:id="deleteTask" mnemonicParsing="false" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="525.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.0" minWidth="10.0" prefWidth="71.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </bottom>
               <center>
                 <ListView fx:id="taskList" prefHeight="200.0" prefWidth="200.0" />
               </center>

@@ -37,6 +37,10 @@ public class TaskList implements Serializable {
     return task;
   }
 
+  public void removeTask(Task task) {
+    tasks.remove(task);
+  }
+
   @Override
   public String toString() {
     return getName();

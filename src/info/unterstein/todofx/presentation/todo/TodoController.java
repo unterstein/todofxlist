@@ -46,6 +46,9 @@ public class TodoController implements Initializable {
   @FXML
   private TextField newTask;
 
+  @FXML
+  private Button deleteTask;
+
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     updateList();
@@ -110,6 +113,15 @@ public class TodoController implements Initializable {
       @Override
       public ListCell<Task> call(ListView<Task> taskListView) {
         return new TaskCell();
+      }
+    });
+    deleteTask.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        Task selectedItem = taskList.getSelectionModel().getSelectedItem();
+        TodoListService.instance().getSelectedList().removeTask(selectedItem);
+        updateList();
       }
     });
   }
