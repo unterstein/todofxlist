@@ -71,7 +71,7 @@ public class TodoListService {
   }
 
   public User register(String userName, String password, String rePassword) throws IllegalArgumentException {
-    if (users.containsKey(userName) == true || validateEquals(password, rePassword)) {
+    if (users.containsKey(userName) == true || validateEquals(password, rePassword) == false) {
       throw new IllegalArgumentException();
     }
     User user = User.createUser(userName, password);

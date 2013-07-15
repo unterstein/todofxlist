@@ -11,15 +11,15 @@
 
 <GridPane alignment="CENTER" hgap="10.0" minHeight="600.0" minWidth="800.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml">
   <children>
-    <BorderPane minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <BorderPane minHeight="600.0" minWidth="800.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <center>
-        <FlowPane alignment="TOP_CENTER">
-          <children>
-            <TabPane minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="Login">
-                  <content>
-                    <GridPane minHeight="-Infinity" minWidth="-Infinity">
+        <TabPane minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab text="Login">
+              <content>
+                <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" rowValignment="TOP">
+                  <children>
+                    <GridPane minHeight="-Infinity" minWidth="400.0">
                       <children>
                         <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                         <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -39,11 +39,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                     </GridPane>
-                  </content>
-                </Tab>
-                <Tab text="Register">
-                  <content>
-                    <GridPane>
+                  </children>
+                </FlowPane>
+              </content>
+            </Tab>
+            <Tab text="Register">
+              <content>
+                <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" rowValignment="TOP">
+                  <children>
+                    <GridPane minWidth="400.0">
                       <children>
                         <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                         <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -65,12 +69,12 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                     </GridPane>
-                  </content>
-                </Tab>
-              </tabs>
-            </TabPane>
-          </children>
-        </FlowPane>
+                  </children>
+                </FlowPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
       </center>
       <top>
         <FlowPane alignment="CENTER" columnHalignment="CENTER">
