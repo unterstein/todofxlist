@@ -1,6 +1,9 @@
 package info.unterstein.todofx.business.entity;
 
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +13,7 @@ public class Task implements Serializable {
 
   private String description;
 
-  private boolean finished;
+  private BooleanProperty finished;
 
   private boolean prioritized;
 
@@ -19,6 +22,7 @@ public class Task implements Serializable {
 
   public Task(String title) {
     this.title = title;
+    this.finished = new SimpleBooleanProperty(false);
   }
 
   public String getTitle() {
@@ -38,11 +42,11 @@ public class Task implements Serializable {
   }
 
   public boolean isFinished() {
-    return finished;
+    return finished.get();
   }
 
   public void setFinished(boolean finished) {
-    this.finished = finished;
+    this.finished.setValue(finished);
   }
 
   public boolean isPrioritized() {
@@ -64,5 +68,14 @@ public class Task implements Serializable {
   public String toSerializeString() {
     return this.getTitle() + ", " + this.getDescription() + ", " + this.isFinished() + ", " + this.isPrioritized() + ", "
         + this.getDueDate();
+  }
+
+  public BooleanProperty getFinishedProperty() {
+    return finished;
+  }
+
+  @Override
+  public String toString() {
+    return getTitle();
   }
 }
