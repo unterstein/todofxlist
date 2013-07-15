@@ -4,6 +4,7 @@ import info.unterstein.todofx.business.entity.Task;
 import info.unterstein.todofx.business.entity.TaskList;
 import info.unterstein.todofx.business.entity.User;
 
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 /**
@@ -12,6 +13,8 @@ import java.util.Map;
 public class TodoListService {
 
   private static final TodoListService instance = new TodoListService();
+
+  public static SimpleDateFormat SDF = new SimpleDateFormat("dd.MM.yyyy");
 
   private Map<String, User> users;
 

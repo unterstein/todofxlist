@@ -33,15 +33,13 @@ public class TaskDetailController implements Initializable {
   @FXML
   private Button back;
 
-  private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     final Task currentTask = TodoListService.instance().getSelectedTask();
     title.setText(currentTask.getTitle());
     description.setText(currentTask.getDescription());
     if (currentTask.getDueDate() != null) {
-      dueDate.setText(sdf.format(currentTask.getDueDate()));
+      dueDate.setText(TodoListService.SDF.format(currentTask.getDueDate()));
     }
     finished.setSelected(currentTask.isFinished());
     prioritized.setSelected(currentTask.isPrioritized());
@@ -55,7 +53,7 @@ public class TaskDetailController implements Initializable {
         currentTask.setPrioritized(prioritized.isSelected());
         if (dueDate.getText() != null && "".equals(dueDate.getText()) == false) {
           try {
-            currentTask.setDueDate(sdf.parse(dueDate.getText()));
+            currentTask.setDueDate(TodoListService.SDF.parse(dueDate.getText()));
           } catch (Exception e) {
             e.printStackTrace(); // TODO
           }

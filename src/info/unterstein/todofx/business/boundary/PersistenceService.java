@@ -6,6 +6,7 @@ import info.unterstein.todofx.business.entity.User;
 
 import java.io.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,7 +79,11 @@ class PersistenceService {
           task.setPrioritized(Boolean.valueOf(split[3].trim()));
           String date = split[4].trim();
           if (date != null && "null".equals(date) == false) {
-            task.setDueDate(Date.valueOf(date));
+            try {
+              task.setDueDate(TodoListService.SDF.parse(date));
+            } catch (Exception e) {
+              e.printStackTrace(); // TODO
+            }
           }
         }
       }

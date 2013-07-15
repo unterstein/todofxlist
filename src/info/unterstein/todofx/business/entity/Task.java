@@ -1,9 +1,11 @@
 package info.unterstein.todofx.business.entity;
 
 
+import info.unterstein.todofx.business.boundary.TodoListService;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import javax.jnlp.PersistenceService;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -67,7 +69,7 @@ public class Task implements Serializable {
 
   public String toSerializeString() {
     return this.getTitle() + ", " + this.getDescription() + ", " + this.isFinished() + ", " + this.isPrioritized() + ", "
-        + this.getDueDate();
+        + TodoListService.SDF.format(this.getDueDate());
   }
 
   public BooleanProperty getFinishedProperty() {
