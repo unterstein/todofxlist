@@ -4,6 +4,7 @@ import info.unterstein.todofx.App;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import info.unterstein.todofx.business.entity.Task;
 import info.unterstein.todofx.business.entity.TaskList;
+import info.unterstein.todofx.presentation.AbstractView;
 import info.unterstein.todofx.presentation.login.LoginView;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ObservableValue;
@@ -11,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -18,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -82,7 +85,16 @@ public class TodoController implements Initializable {
             return task.getFinishedProperty();
           }
         };
-        CheckBoxListCell<Task> cell = new CheckBoxListCell<>(callback);
+        final CheckBoxListCell<Task> cell = new CheckBoxListCell<>(callback);
+        cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+          @Override
+          public void handle(MouseEvent mouseEvent) {
+            TodoListService.instance().setSelectedTask(cell.getItem());
+            AbstractView view = new TaskDetailView();
+            App.initAndStartView(view);
+          }
+        });
         return cell;
       }
     });

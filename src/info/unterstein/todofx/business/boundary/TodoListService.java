@@ -1,5 +1,6 @@
 package info.unterstein.todofx.business.boundary;
 
+import info.unterstein.todofx.business.entity.Task;
 import info.unterstein.todofx.business.entity.TaskList;
 import info.unterstein.todofx.business.entity.User;
 
@@ -17,6 +18,8 @@ public class TodoListService {
   private TaskList selectedList;
 
   private User loggedInUser;
+
+  private Task selectedTask;
 
   private TodoListService() {
   }
@@ -95,5 +98,13 @@ public class TodoListService {
 
   public void setSelectedList(TaskList selectedList) {
     this.selectedList = selectedList;
+  }
+
+  public Task getSelectedTask() {
+    return selectedTask;
+  }
+
+  public void setSelectedTask(Task selectedTask) {
+    this.selectedTask = selectedTask;
   }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" hgap="10.0" minHeight="600.0" minWidth="800.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <BorderPane minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <bottom>
+        <FlowPane>
+          <children>
+            <Button mnemonicParsing="false" text="Back" />
+          </children>
+        </FlowPane>
+      </bottom>
+      <center>
+        <GridPane prefHeight="221.0">
+          <children>
+            <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label alignment="TOP_LEFT" text="Description" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label text="Finished" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label text="Prioritized" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label text="Duedate" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="title" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextArea fx:id="description" prefHeight="100.0" prefWidth="700.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="finished" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <CheckBox fx:id="prioritized" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="dueDate" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="398.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="700.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="28.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </center>
+    </BorderPane>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>
