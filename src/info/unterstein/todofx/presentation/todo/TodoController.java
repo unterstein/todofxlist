@@ -91,8 +91,7 @@ public class TodoController implements Initializable {
           @Override
           public void handle(MouseEvent mouseEvent) {
             TodoListService.instance().setSelectedTask(cell.getItem());
-            AbstractView view = new TaskDetailView();
-            App.initAndStartView(view);
+            App.initAndStartView(new TaskDetailView());
           }
         });
         return cell;

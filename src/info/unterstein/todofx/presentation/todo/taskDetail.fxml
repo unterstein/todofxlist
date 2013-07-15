@@ -12,7 +12,7 @@
       <bottom>
         <FlowPane>
           <children>
-            <Button mnemonicParsing="false" text="Back" />
+            <Button fx:id="back" mnemonicParsing="false" text="Back" />
           </children>
         </FlowPane>
       </bottom>

@@ -1,10 +1,13 @@
 package info.unterstein.todofx.presentation.todo;
 
+import info.unterstein.todofx.App;
 import info.unterstein.todofx.business.boundary.TodoListService;
 import info.unterstein.todofx.business.entity.Task;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -27,11 +30,14 @@ public class TaskDetailController implements Initializable {
   @FXML
   private CheckBox prioritized;
 
+  @FXML
+  private Button back;
+
   private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    Task currentTask = TodoListService.instance().getSelectedTask();
+    final Task currentTask = TodoListService.instance().getSelectedTask();
     title.setText(currentTask.getTitle());
     description.setText(currentTask.getDescription());
     if (currentTask.getDueDate() != null) {
@@ -39,5 +45,23 @@ public class TaskDetailController implements Initializable {
     }
     finished.setSelected(currentTask.isFinished());
     prioritized.setSelected(currentTask.isPrioritized());
+    back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+      @Override
+      public void handle(MouseEvent mouseEvent) {
+        currentTask.setDescription(description.getText());
+        currentTask.setTitle(title.getText());
+        currentTask.setFinished(finished.isSelected());
+        currentTask.setPrioritized(prioritized.isSelected());
+        if (dueDate.getText() != null && "".equals(dueDate.getText()) == false) {
+          try {
+            currentTask.setDueDate(sdf.parse(dueDate.getText()));
+          } catch (Exception e) {
+            e.printStackTrace(); // TODO
+          }
+        }
+        App.initAndStartView(new TodoView());
+      }
+    });
   }
 }
